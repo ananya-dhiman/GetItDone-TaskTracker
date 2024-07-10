@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    
+</head>
+<body>
+    <div class="container">
+        <div class="menu">
+            <h2>Menu</h2>
+            <ul>
+                <li id="project">Projects <span>+</span></li>
+                <ul id="list"></ul>
+            </ul>
+        </div>
+        <div class="todos">
+            <h2>To-Dos</h2>
+            <!-- To-Do add card -->
+            <div class="todo"></div>
+        
+    
+        <div class="todo-add-card hidden" id="addTaskForm">
+        <h3>Add a New Task</h3>
+        <input type="text" id="titleInput" placeholder="Enter title..." required>
+        <textarea id="descriptionInput" placeholder="Enter description..." ></textarea>
+        <div id="priority">
+            <button id="low">Low</button>
+            <button id="medium">Medium</button>
+            <button id="high">High</button>
+        </div>
+        <select id="category">
+            <option id="work">Work</option>
+            <option id="chores">Chores</option>
+            <option id="other">Other</option>
+        </select>
+        <h4>Due Date
+            <input type="date"
+                   id="testdate"
+                   min="2015-01-01T00:00"
+                   max="2025-12-31T23:59"
+                   step="1">
+        </h4>
+        <button id="done">Add Task</button>
+    </div>
+   
+
+        </div>
+        <div class="notes">
+            <h2>Notes</h2>
+            <!-- Notes will be added here -->
+        </div>
+    </div>
+</body>
+</html>
