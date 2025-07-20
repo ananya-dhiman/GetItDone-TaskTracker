@@ -216,6 +216,16 @@ body {
         .a:hover{
             transform: scale(1.2);
         }
-          
+
+        #heading{
+            text-transform: uppercase;
+            align-self: flex-start;
+            font-size: 25px ;
+            font-weight: 600;
+            margin-bottom: 20px;
+            margin-left:0px;
+            text-align: start;
+        }
         
+    
         

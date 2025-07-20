@@ -4,6 +4,10 @@ import icon3 from './assets/icons8-dropdown-50.png';
 
 
 import { hideAdd } from "./toggleTodocard";
+import { showTodoList } from './project';
+import { projects,idk } from './project';
+
+export const td=[];
 
 const priorityInput = document.getElementById("priority");
 const low = document.getElementById("low");
@@ -31,13 +35,12 @@ high.addEventListener("click", function(){
     low.style.backgroundColor = "white";
 });
 
+export function addjob(projects,idk){
+    console.log(idk);
 
-export function add(){
     
     console.log("working");
     const todoContainer = document.getElementsByClassName('todos')[0];
-
-    
     const titleInput = document.getElementById('titleInput').value;
     const descriptionInput = document.getElementById('descriptionInput').value;
     const priorityInput = document.getElementById("priority");
@@ -45,6 +48,9 @@ export function add(){
     const dueDateInput= document.getElementById("testdate")?.value || '';
    
     console.log("Inputs:", {titleInput, descriptionInput, cat, priority: priorityInput.value,dueDateInput});
+    
+    
+   
 
     const priorityColors = {
         high: '#ff6b6b',
@@ -52,11 +58,12 @@ export function add(){
         low: '#1dd1a1'
     };
 
-    const todoCard = document.createElement('div');
-    todoCard.className = 'tocard one'; 
+    const todoCard = document.createElement('div'); //Official card container
+    todoCard.className = 'tocard one '+ titleInput; 
     var check = document.createElement("INPUT");
     check.setAttribute("type", "checkbox");
     check.setAttribute("id", "checkcss");
+    
     
     const icon = document.createElement('div');
     icon.className = 'icon';
@@ -106,16 +113,7 @@ export function add(){
         const formattedDate = `Due ${day}${getOrdinalSuffix(day)} ${month}`;
         dueDate.textContent = formattedDate;
     } 
-
-    
-
-    
-
-
     todoCard.style.backgroundColor = priorityColors[priorityInput.value];
-    
-
-
     const todoContent = document.createElement('div');
     todoContent.className = 'todo-content';
     const todoHeader = document.createElement('div');
@@ -145,8 +143,27 @@ export function add(){
     }
 
     subCatSection.appendChild(todoCard);
+   
+    
+    // Creating tdj to put into td and checking whether todojob has same Id as projectId
+    const tdj={};
+    tdj.id=idk;
+    tdj.cname=titleInput
 
-    // Clear input fields after adding the task
+    td[titleInput]=tdj;
+    console.log(td);
+    
+    for(const job in td ){
+        console.log(job);
+    if (job.id==idk && todoCard.classList.contains("hidden")) {
+        todoCard.classList.remove="hidden";
+    }
+    else if(!todoCard.classList.contains("hidden")){
+        todoCard.classList.add="hidden";
+    }
+
+};
+// Clear input fields after adding the task
     document.getElementById('titleInput').value = '';
     document.getElementById('descriptionInput').value = '';
     document.getElementById('category').value = 'Work'; 
@@ -154,10 +171,7 @@ export function add(){
     low.style.backgroundColor = "white";
     medium.style.backgroundColor = "white";
     high.style.backgroundColor = "white";
-    priorityInput.value = ""; //
-
-    hideAdd();
-
+    priorityInput.value = ""; 
     // Functioning
     //drop
     function toggleDropdown(){
@@ -292,10 +306,7 @@ export function add(){
         // If description is not showing, remove it from the DOM
        
     }
-
-        
-            
-
+    
     });
 
     //delete
@@ -303,7 +314,6 @@ export function add(){
         todoCard.remove()
     
     });
-
     check.addEventListener("change", function() {
     if(check.checked){
         todoCard.style.opacity = "0.5";

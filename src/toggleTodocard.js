@@ -1,5 +1,6 @@
+import { projectName } from "./project";
 
-export function showAdd() {
+export function showAdd(projectName) {
     const addTaskForm = document.getElementById('addTaskForm');
     addTaskForm.classList.remove('hidden');
 }
